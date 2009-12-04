@@ -28,7 +28,7 @@ def modify_makefile(target, source, env):
     i.close()
     o.close()
 env.Command('makefile.scons', 'makefile.vc', modify_makefile)
-env.Command(['libjpeg-7' + env['LIB_SUFFIX'] + '.dll', 'libjpeg.lib'], 'makefile.scons', 'nmake $SOURCE')
+env.Command(['libjpeg-7.dll', 'libjpeg.lib'], 'makefile.scons', 'nmake -f $SOURCE')
 
 env.Alias('install', env.Install('$PREFIX/include/', headers))
 env.Alias('install', env.Install('$PREFIX/bin', 'libjpeg-7.dll'))
